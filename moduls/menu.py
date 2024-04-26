@@ -1,23 +1,22 @@
-from load import *
-from show import show
-from search import search
-from close import close
-from db import read
+from moduls.load import *
+from moduls.show import show
+from moduls.search import search
+from moduls.modify import modify
+from moduls.remove import remove
+from db.save import close
+from db.query import read
 
 datos: list[str] = read()
 
 def main():
-    '''
-    Funcion la cual spawnea el menu del programa
-    '''
-
-    print('>>> Bienvenido a la Splinter Base')
+    print('> Welcome a Ranking with Splinter')
     time.sleep(.5)
+
     cont = 1
     while cont > 0:
-        print('1 - Cargar\n2 - Mostrar\n3 - Buscar\n4 - Salir\n')
+        print('[1] - Load\n[2] - Show\n[3] - Search\n[4] - Modify\n[5] - Deleted\n[6] - Go out\n')
         time.sleep(.5)
-        menu = int(input('- Ingresa la opcion a la que deseas acceder: '))
+        menu = int(input('- Input your selection!: '))
         
         if menu == 1:
             cont = 1
@@ -29,15 +28,16 @@ def main():
             cont = 1
             search(datos)
         elif menu == 4:
+            modify(datos)
+        elif menu == 5:
+            remove(datos)
+        elif menu == 6:
             cont = 0
             close()
             os.system('cls')
-            print('> Gracias por ser usuario de la base Splinter B)')
+            print('> Thank You for ussed Splinter Ranked :)')
         else:
-            print('> Ingresa algo valido')
-
-if __name__ == '__main__':
-    main()
+            print('> Say valid input!')
 
 # · | Referencias |
 # · # = Salida
